@@ -30,6 +30,7 @@ function App() {
     setEditedValue(data[index]);
     setInputValue(data[index]);
   };
+
   //setInputValue(value);
 
   // // setData(newData)
@@ -45,6 +46,19 @@ function App() {
   const onDelete = (e) => {
     setData((prevdata) => prevdata.filter((item) => item !== e));
   };
+  const items = [];
+  for (let i = 0; i < data.length; i++) {
+    const x = data[i];
+
+    items.push(
+      <div key={i}>
+        <h3>{x}</h3>
+        <input type="checkbox" value=""></input>
+        <button onClick={() => onDelete(x)}>X</button>
+        <button onClick={() => onEdit(i)}>Edit</button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -66,7 +80,7 @@ function App() {
         </div>
       </div>
       <br />
-      {data.map((x, i) => {
+      {/* {data.map((x, i) => {
         return (
           <div key={i}>
             <h3>{x}</h3>
@@ -75,7 +89,8 @@ function App() {
             <button onClick={() => onEdit(i)}>Edit</button>
           </div>
         );
-      })}
+      })} */}
+      {items}
     </div>
   );
 }
